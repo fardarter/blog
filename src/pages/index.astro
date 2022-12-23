@@ -1,5 +1,6 @@
 ---
 import Layout from '../components/Layout.astro';
+const posts = await Astro.glob('../pages/posts/*.mdx');
 ---
 
 <Layout title="Astro Quickstart">
@@ -19,6 +20,16 @@ import Layout from '../components/Layout.astro';
           <a href="https://github.com/netlify-templates/astro-quickstart" class="bttn secondary">View Repo</a>
         </div>
       </div>
+ 
+
+      <div>
+      {posts.map((post) => (
+        <article>
+          <h1>{post.frontmatter.title}</h1>
+          <a href={post.url}>{post.frontmatter.title}</a>
+        </article>
+      ))}
+</div>
 			<div class="resource-list">
         <ul>
           <li>
